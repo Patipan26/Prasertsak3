@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "author": "asrfasr arassfa",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -51, "left": 22, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -67.2, "left": -119.96, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 246.4,
+      "left": -119.2,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -22.8, "left": 71, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": -22.8, "left": 119, "attrs": { "color": "blue" } },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -22.8,
+      "left": 167,
+      "attrs": { "color": "yellow" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:22", "lcd1:SCL", "green", [ "h9.6", "v192", "h-134.4", "v134.1" ] ],
+    [ "lcd1:SDA", "esp:21", "magenta", [ "h-38.4", "v-134.2", "h153.6", "v-153.6" ] ],
+    [ "esp:5V", "lcd1:VCC", "red", [ "h-9.45", "v153.5" ] ],
+    [ "lcd1:GND", "bb1:bn.1", "black", [ "h-19.2", "v-124.8", "h190.4" ] ],
+    [ "esp:GND.1", "bb1:bn.25", "black", [ "h-9.45", "v-163.2", "h460.8", "v222.1" ] ],
+    [ "bb1:16b.f", "bb1:16t.e", "orange", [ "v0" ] ],
+    [ "bb1:15b.f", "bb1:15t.e", "black", [ "v0" ] ],
+    [ "bb1:10b.f", "bb1:10t.e", "black", [ "v0" ] ],
+    [ "bb1:5b.f", "bb1:5t.e", "black", [ "v0" ] ],
+    [ "bb1:6b.f", "bb1:6t.e", "green", [ "v0" ] ],
+    [ "bb1:11t.e", "bb1:11b.f", "blue", [ "v0" ] ],
+    [ "bb1:bn.4", "bb1:5b.i", "black", [ "v0" ] ],
+    [ "bb1:bn.8", "bb1:10b.i", "black", [ "v0" ] ],
+    [ "bb1:bn.12", "bb1:15b.i", "black", [ "v0" ] ],
+    [ "esp:32", "bb1:16b.j", "orange", [ "h-19.05", "v-124.8", "h144", "v230.4", "h182.4" ] ],
+    [ "led1:A", "bb1:6t.c", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:5t.c", "", [ "$bb" ] ],
+    [ "led2:A", "bb1:11t.c", "", [ "$bb" ] ],
+    [ "led2:C", "bb1:10t.c", "", [ "$bb" ] ],
+    [ "led3:A", "bb1:16t.c", "", [ "$bb" ] ],
+    [ "led3:C", "bb1:15t.c", "", [ "$bb" ] ],
+    [ "esp:19", "bb1:6b.j", "green", [ "h38.4", "v86.4", "h76.8" ] ],
+    [ "esp:18", "bb1:11b.j", "blue", [ "h48", "v96", "h115.2" ] ]
+  ],
+  "dependencies": {}
+}
